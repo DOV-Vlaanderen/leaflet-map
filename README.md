@@ -17,7 +17,6 @@ Web-components are an emerging standard which is based on Custom Elements, Shado
 [Polymer](http://www.polymer-project.org/docs/start/tutorial/intro.html) is a library which simplifies working with web-components. It includes a compatibility layer for browsers which
 do not yet support web-components natively, yet.
 
-
 ## Quickstart Guide
 
 Make leaflet maps using declarative [Polymer](http://polymer-project.org) web components.
