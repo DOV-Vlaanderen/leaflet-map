@@ -1,0 +1,66 @@
+<link rel="import" href="leaflet-core.html">
+
+<!--
+attribution control that shows the attribution of the current center of screen in metric (m/km) and imperial (mi/ft) systems. (<a href="http://leafletjs.com/reference.html#control-attribution">Leaflet Reference</a>).
+
+##### Example
+
+    <leaflet-attribution-control> </leaflet-attribution-control>
+	
+##### Example
+
+    <leaflet-attribution-control metric>
+    </leaflet-attribution-control>
+
+@element leaflet-attribution-control
+@blurb attribution control that shows the attribution of the current center of screen in metric (m/km) and imperial (mi/ft) systems. 
+@homepage https://leaflet-extras.github.io/leaflet-map/
+@demo https://leaflet-extras.github.io/leaflet-map/demo.html
+-->
+
+<dom-module id="leaflet-attribution-control">
+	<template>
+	  <style>
+		  :host {display: none;}
+	  </style>
+	</template>
+	<script>
+	"use strict";
+
+	Polymer({
+		is: 'leaflet-attribution-control',
+
+		properties: {
+
+			/**
+			 * The `position` attribute sets the position of the control (one of the map corners). See control positions.
+			 *
+			 * @attribute position
+			 * @type string
+			 */
+			position: {
+				type: String,
+				value: "bottomleft"
+			},
+
+			container: {
+				type: Object,
+				observer: '_containerChanged'
+			}
+		},
+
+		_containerChanged: function() {
+			if (this.container) {
+
+				L.control.attribution({position: this.position}).addTo(this.container);
+			}
+		},
+
+		detached: function() {
+			if (this.container && this.control) {
+				this.container.removeControl(this.control);
+			}
+		}
+	});
+	</script>
+</dom-module>
