@@ -398,8 +398,46 @@ document.addEventListener("load", function() {
 
 
 
+<h2 id="layerwms">Tile layer WMTS</h2>
 
-<h2 id="event">Events</h2>
+<p>It is possible to display data from external WMTS services as tile layers on the map.</p>
+
+
+	<leaflet-map latitude="51" longitude="3.7" zoom="7">
+
+		<leaflet-tilelayer-wmts
+				url="http://tile.informatievlaanderen.be/ws/raadpleegdiensten/wmts"
+				layers="omwrgbmrvl"
+				format="image/png"
+				tilematrix-set="GoogleMapsVL"
+				styles=""
+				max-zoom="21">
+			<a href="http://grb.agiv.be/geodiensten">AGIV</a>
+		</leaflet-tilelayer-wmts>
+
+	</leaflet-map>
+
+
+
+<pre class="html"><code>
+&lt;<span class="i">leaflet-map</span> <span class="a">latitude</span>="<span class="v">51</span>" <span class="a">longitude</span>="<span class="v">3.7</span>" <span class="a">zoom</span>="<span class="v">7</span>"&gt;
+
+	&lt;<span class="i">leaflet-tilelayer-wmts</span>
+		<span class="a">url</span>="<span class="v">http://tile.informatievlaanderen.be/ws/raadpleegdiensten/wmts</span>"
+		<span class="a">layers</span>="<span class="v">omwrgbmrvl</span>"&gt;
+		<span class="a">format</span>="<span class="v">image/png</span>"&gt;
+		<span class="a">tilematrix-set</span>="<span class="v">GoogleMapsVL</span>"&gt;
+		<span class="a">styles</span>="<span class="v"></span>"&gt;
+		<span class="a">max-zoom</span>="<span class="v">21</span>"&gt;
+		&lt;a href="http://grb.agiv.be/geodiensten">AGIV&lt;/a&gt;
+	&lt;/<span class="i">leaflet-tilelayer-wmts</span>&gt;
+
+&lt;/<span class="i">leaflet-map</span>&gt;
+
+</code></pre>
+
+
+	<h2 id="event">Events</h2>
 
 <p>Leaflet events are converted into html events which originate from the component.</p> 
 

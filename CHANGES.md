@@ -1,3 +1,13 @@
+v2.1.6
+======
+* fix touch events for nested components
+* add support WMTS
+* add attribution control
+
+v2.5.0
+======
+* use debounce for map change events
+
 v1.2.0
 ======
 * propagate leaflet initialisation events (thanks to Fedor Baart)
