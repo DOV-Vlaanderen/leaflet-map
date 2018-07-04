@@ -1,4 +1,8 @@
-v2.1.6
+v2.6.0
+======
+* Added the option 'hidden' to tilelayers. Allows to create a layer but not have it added to the map by default.
+
+v2.6.0
 ======
 * fix touch events for nested components
 * add support WMTS
