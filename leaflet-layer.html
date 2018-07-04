@@ -251,6 +251,18 @@ window.leafletMap.LeafletTileLayer = {
 		reuseTiles: {
 			type: Boolean,
 			value: false
+		},
+
+		/**
+		 * The `hidden` attribute sets whether the layer will be added to the map or not.
+		 * A hidden layer can be added to the map in code by using the polymer selector e.g. this.$.yourlayerId.layer.
+		 *
+		 * @attribute hidden
+		 * @type bool
+		 */
+		hidden: {
+			type: Boolean,
+			value: false
 		}
 
 	},
@@ -354,7 +366,9 @@ Polymer({
 			layer.on('loading load tileloadstart tileload tileunload', function(e) {
 				this.fire(e.type, e);
 			}, this);
-			this.layer.addTo(this.container);
+			if (!this.hidden) {
+				this.layer.addTo(this.container);
+			}
 		}
 	},
 	
@@ -512,7 +526,9 @@ element which defines a tile layer for wms (<a href="http://leafletjs.com/refere
 				layer.on('loading load tileloadstart tileload tileunload', function(e) {
 					this.fire(e.type, e);
 				}, this);
-				this.layer.addTo(this.container);
+				if (!this.hidden) {
+					this.layer.addTo(this.container);
+				}
 			}
 		},
 
@@ -607,6 +623,17 @@ element which defines a tile layer for wms (<a href="http://leafletjs.com/refere
 			container: {
 				type: Object,
 				observer: '_containerChanged'
+			},
+			/**
+			 * The `hidden` attribute sets whether the layer will be added to the map or not.
+			 * A hidden layer can be added to the map in code by using the polymer selector e.g. this.$.yourlayerId.layer.
+			 *
+			 * @attribute hidden
+			 * @type bool
+			 */
+			hidden: {
+				type: Boolean,
+				value: false
 			}
 
 		},
@@ -628,7 +655,9 @@ element which defines a tile layer for wms (<a href="http://leafletjs.com/refere
 					this.fire(e.type, e);
 				}, this);
 
-				this.layer.addTo(this.container);
+				if (!this.hidden) {
+					this.layer.addTo(this.container);
+				}
 			}
 		},
 
