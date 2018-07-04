@@ -1,4 +1,4 @@
-v2.6.0
+v2.7.0
 ======
 * Added the option 'hidden' to tilelayers. Allows to create a layer but not have it added to the map by default.
 
