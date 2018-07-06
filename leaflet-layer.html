@@ -260,7 +260,7 @@ window.leafletMap.LeafletTileLayer = {
 		 * @attribute hidden
 		 * @type bool
 		 */
-		hidden: {
+		layerHidden: {
 			type: Boolean,
 			value: false
 		}
@@ -366,7 +366,7 @@ Polymer({
 			layer.on('loading load tileloadstart tileload tileunload', function(e) {
 				this.fire(e.type, e);
 			}, this);
-			if (!this.hidden) {
+			if (!this.layerHidden) {
 				this.layer.addTo(this.container);
 			}
 		}
@@ -526,7 +526,7 @@ element which defines a tile layer for wms (<a href="http://leafletjs.com/refere
 				layer.on('loading load tileloadstart tileload tileunload', function(e) {
 					this.fire(e.type, e);
 				}, this);
-				if (!this.hidden) {
+				if (!this.layerHidden) {
 					this.layer.addTo(this.container);
 				}
 			}
@@ -631,7 +631,7 @@ element which defines a tile layer for wms (<a href="http://leafletjs.com/refere
 			 * @attribute hidden
 			 * @type bool
 			 */
-			hidden: {
+			layerHidden: {
 				type: Boolean,
 				value: false
 			}
@@ -655,7 +655,7 @@ element which defines a tile layer for wms (<a href="http://leafletjs.com/refere
 					this.fire(e.type, e);
 				}, this);
 
-				if (!this.hidden) {
+				if (!this.layerHidden) {
 					this.layer.addTo(this.container);
 				}
 			}
