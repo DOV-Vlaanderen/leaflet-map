@@ -1,3 +1,7 @@
+v2.7.2
+======
+* fix disable drag option. In IE and firefox markers were always draggable.
+
 v2.7.1
 ======
 * Changed option 'hidden' to 'layerHidden' because it hidden is a reserved word (does not work in firefox).
