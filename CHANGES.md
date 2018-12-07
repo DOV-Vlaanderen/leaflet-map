@@ -1,3 +1,7 @@
+v2.7.3
+======
+* zIndex, transparency and opacity properties added to wmts layer.
+
 v2.7.2
 ======
 * fix disable drag option. In IE and firefox markers were always draggable.
