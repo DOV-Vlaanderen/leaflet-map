@@ -251,6 +251,18 @@ window.leafletMap.LeafletTileLayer = {
 		reuseTiles: {
 			type: Boolean,
 			value: false
+		},
+
+		/**
+		 * The `hidden` attribute sets whether the layer will be added to the map or not.
+		 * A hidden layer can be added to the map in code by using the polymer selector e.g. this.$.yourlayerId.layer.
+		 *
+		 * @attribute hidden
+		 * @type bool
+		 */
+		layerHidden: {
+			type: Boolean,
+			value: false
 		}
 
 	},
@@ -354,7 +366,9 @@ Polymer({
 			layer.on('loading load tileloadstart tileload tileunload', function(e) {
 				this.fire(e.type, e);
 			}, this);
-			this.layer.addTo(this.container);
+			if (!this.layerHidden) {
+				this.layer.addTo(this.container);
+			}
 		}
 	},
 	
@@ -512,7 +526,9 @@ element which defines a tile layer for wms (<a href="http://leafletjs.com/refere
 				layer.on('loading load tileloadstart tileload tileunload', function(e) {
 					this.fire(e.type, e);
 				}, this);
-				this.layer.addTo(this.container);
+				if (!this.layerHidden) {
+					this.layer.addTo(this.container);
+				}
 			}
 		},
 
@@ -523,4 +539,134 @@ element which defines a tile layer for wms (<a href="http://leafletjs.com/refere
 		},
 
 	});
+</script>
+
+
+	<!--
+	element which defines a tile layer for wmts (<a href="http://leafletjs.com/reference.html#tilelayer-wmts">Leaflet Reference</a>).
+
+	##### Example
+
+	<leaflet-tilelayer-wmts
+	url="https://mesonet.agron.iastate.edu/cgi-bin/wmts/nexrad/n0r.cgi"
+	layers="nexrad-n0r-900913" format="image/png" transparent>
+
+	Weather data &copy; 2012 IEM Nexrad
+
+	</leaflet-tilelayer-wmts>
+
+	@element leaflet-tilelayer-wmts
+	@blurb Element which defines a tile layer for wmts. The content of the leaflet-tilelayer-wmts is used as attribution. It inherits attributes and events from &lt;leaflet-tilelayer&gt;
+	@demo https://leaflet-extras.github.io/leaflet-map/demo.html
+			@homepage https://leaflet-extras.github.io/leaflet-map/
+			@since 0.0.2
+-->
+	<dom-module id="leaflet-tilelayer-wmts">
+	<template>
+	<style>
+	:host {display: none;}
+	</style>
+	</template>
+	</dom-module>
+	<script>
+	"use strict";
+
+	Polymer({
+		is: 'leaflet-tilelayer-wmts',
+		behaviors: [leafletMap.LeafletILayer, leafletMap.LeafletTileLayer],
+
+		properties: {
+
+			url: {
+				type: String,
+				observer: '_urlChanged'
+			},
+
+			/**
+			 * The `layer` attribute sets the comma-separated list of WMS layers to show (required).
+			 *
+			 * @attribute layer
+			 * @type string
+			 */
+			layers: {
+				type: String,
+				value: ""
+			},
+
+			/**
+			 * The `style` attribute sets the comma-separated list of WMS styles.
+			 *
+			 * @attribute style
+			 * @type string
+			 */
+			styles: {
+				type: String,
+				value: ""
+			},
+
+			/**
+			 * The `format` attribute sets the WMS image format (use 'image/png' for layers with transparency).
+			 *
+			 * @attribute format
+			 * @type string
+			 */
+			format: {
+				type: String,
+				value: "image/jpeg"
+			},
+
+			tilematrixSet: {
+				type: String,
+				value: ""
+			},
+
+			container: {
+				type: Object,
+				observer: '_containerChanged'
+			},
+			/**
+			 * The `hidden` attribute sets whether the layer will be added to the map or not.
+			 * A hidden layer can be added to the map in code by using the polymer selector e.g. this.$.yourlayerId.layer.
+			 *
+			 * @attribute hidden
+			 * @type bool
+			 */
+			layerHidden: {
+				type: Boolean,
+				value: false
+			}
+
+		},
+		_containerChanged: function() {
+
+			if (this.container) {
+				var layer = new L.TileLayer.WMTS(this.url, {
+					attribution: Polymer.dom(this).innerHTML + this.attribution,
+					layer: this.layers,
+					style: this.styles,
+					tilematrixSet: this.tilematrixSet,
+					maxZoom: this.maxZoom,
+					format: this.format
+				});
+				this.layer = layer;
+
+				// forward events
+				layer.on('loading load tileloadstart tileload tileunload', function(e) {
+					this.fire(e.type, e);
+				}, this);
+
+				if (!this.layerHidden) {
+					this.layer.addTo(this.container);
+				}
+			}
+		},
+
+		_urlChanged: function() {
+			if (this.layer) {
+				this.layer.setUrl(this.url);
+			}
+		},
+
+	});
+
 </script>

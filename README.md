@@ -73,6 +73,7 @@ List of demos:
 * [leaflet-polyline](https://leaflet-extras.github.io/leaflet-map/demo.html#vector) (L.polyline) (since 0.3.0)
 * [leaflet-tilelayer](https://leaflet-extras.github.io/leaflet-map/demo.html#tilelayer) (L.tileLayer)
 * [leaflet-tilelayer-wms](https://leaflet-extras.github.io/leaflet-map/demo.html#layerwms) (L.tileLayer.wms)  (since 0.0.2)
+* [leaflet-tilelayer-wmts](https://leaflet-extras.github.io/leaflet-map/demo.html#layerwmts) (L.tileLayer.wmts)  (since 0.0.2)
 * [leaflet-scale-control](https://leaflet-extras.github.io/leaflet-map/demo.html#scale) (L.control.scale) (since 0.2.0)
 * [leaflet-geojson](https://leaflet-extras.github.io/leaflet-map/demo.html#geojson) (since 0.4.0)
 * [leaflet-geolocation](https://leaflet-extras.github.io/leaflet-map/demo.html#databinding) (part of L.map) (since 0.0.2)

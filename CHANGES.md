@@ -1,3 +1,25 @@
+v2.7.2
+======
+* fix disable drag option. In IE and firefox markers were always draggable.
+
+v2.7.1
+======
+* Changed option 'hidden' to 'layerHidden' because it hidden is a reserved word (does not work in firefox).
+
+v2.7.0
+======
+* Added the option 'hidden' to tilelayers. Allows to create a layer but not have it added to the map by default.
+
+v2.6.0
+======
+* fix touch events for nested components
+* add support WMTS
+* add attribution control
+
+v2.5.0
+======
+* use debounce for map change events
+
 v1.2.0
 ======
 * propagate leaflet initialisation events (thanks to Fedor Baart)

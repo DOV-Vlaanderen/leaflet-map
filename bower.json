@@ -1,9 +1,10 @@
 {
   "name": "leaflet-map",
-  "version": "2.1.5",
+  "version": "2.7.2",
   "authors": [
     "Hendrik Brummermann <nhnb@users.sourceforge.net>",
-    "Prateek Saxena <prtksxna@gmail.com>"
+    "Prateek Saxena <prtksxna@gmail.com>",
+    "Timothy De Bock <timothy.debock.apollo@gmail.com>"
   ],
   "description": "Leaflet map as web-component based on polymer",
   "main": "leaflet-map.html",

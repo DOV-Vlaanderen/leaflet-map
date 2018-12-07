@@ -691,6 +691,11 @@ Element which defines a maker  (<a href="http://leafletjs.com/reference.html#mar
 
 				this.updatePopupContent();
 				this.feature.addTo(this.container);
+
+				//For some reason dragging is not disabled on firefox unless we call disable.
+				if (!this.draggable) {
+					this.feature.dragging.disable();
+				}
 			}
 		},
 
